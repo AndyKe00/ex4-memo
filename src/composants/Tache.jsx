@@ -4,13 +4,15 @@ import IconButton from '@material-ui/core/IconButton';
 import DoneIcon from '@material-ui/icons/Done';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-export default function Tache({id, texte, completee, date}) {
+
+export default function Tache({id, texte, completee, date, supprimerTache}) {
   return (
-    <div className="Tache">
+    <div className= {'Tache ' + (completee ? 'completee' : '')}>
       <IconButton
         size="small"
         color="primary"
         title="Cliquez pour marquer cette tâche complétée" 
+        
       >
         <DoneIcon />
       </IconButton>
@@ -20,6 +22,7 @@ export default function Tache({id, texte, completee, date}) {
         size="small"
         color="primary"
         title="Supprimer cette tâche" 
+        onClick={() => supprimerTache(id)}
       >
         <DeleteIcon />
       </IconButton>
