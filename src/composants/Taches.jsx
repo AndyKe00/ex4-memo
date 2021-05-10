@@ -36,18 +36,25 @@ export default function Taches({etatTaches, utilisateur}) {
     }
   }
 
-  function supprimerTache(tache)
+  function supprimerTache(idTache)
   {
-    crudTaches.supprimer(uid, tache).then(
-      () => setTaches(taches.filter(t => t.id !== tache))
+    crudTaches.supprimer(uid, idTache).then(
+      () => setTaches(taches.filter(t => t.id !== idTache))
     );
   }
 
-  function basculerTache(tache, completee)
+  function basculerTache(idTache, completee)
   {
-        crudTaches.basculer(uid, tache, completee).then( 
-        //() => setTaches(taches.map(basc => basc.completee))
-        console.log("Basculer!")
+        crudTaches.basculer(uid, idTache, completee).then( 
+        () => setTaches(taches.map(tache =>{
+          if (tache.id === idTache)
+          {
+            tache.completee = !completee;
+          }
+
+          return tache;
+        }))
+        // console.log("Basculer!")
     )
   }
 

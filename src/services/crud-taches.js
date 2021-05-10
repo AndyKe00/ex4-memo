@@ -38,9 +38,9 @@ export async function lireTout(uid) {
                 );
 }
 
-export async function supprimer(uid, tache)
+export async function supprimer(uid, idTache)
 {
-  return instanceFirestore.collection(collUtil).doc(uid).collection(collTaches).doc(tache).delete();
+  return instanceFirestore.collection(collUtil).doc(uid).collection(collTaches).doc(idTache).delete();
 }
 
 /* export async function basculer(uid, tache)
@@ -48,15 +48,15 @@ export async function supprimer(uid, tache)
   return instanceFirestore.collection(collUtil).doc(uid).collection(collTaches).doc(tache).update({completee: true}).catch((erreur) => console.log(erreur));
 } */
 
-export async function basculer(uid, tache, completee)
+export async function basculer(uid, idTache, completee)
 {
   if (completee === true)
   {
-    return instanceFirestore.collection(collUtil).doc(uid).collection(collTaches).doc(tache).update({completee: false})
+    return instanceFirestore.collection(collUtil).doc(uid).collection(collTaches).doc(idTache).update({completee: false})
   }
 
   else
   {
-    return instanceFirestore.collection(collUtil).doc(uid).collection(collTaches).doc(tache).update({completee: true})
+    return instanceFirestore.collection(collUtil).doc(uid).collection(collTaches).doc(idTache).update({completee: true})
   }
 }
