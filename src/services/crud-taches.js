@@ -42,3 +42,21 @@ export async function supprimer(uid, tache)
 {
   return instanceFirestore.collection(collUtil).doc(uid).collection(collTaches).doc(tache).delete();
 }
+
+/* export async function basculer(uid, tache)
+{
+  return instanceFirestore.collection(collUtil).doc(uid).collection(collTaches).doc(tache).update({completee: true}).catch((erreur) => console.log(erreur));
+} */
+
+export async function basculer(uid, tache, completee)
+{
+  if (completee === true)
+  {
+    return instanceFirestore.collection(collUtil).doc(uid).collection(collTaches).doc(tache).update({completee: false})
+  }
+
+  else
+  {
+    return instanceFirestore.collection(collUtil).doc(uid).collection(collTaches).doc(tache).update({completee: true})
+  }
+}

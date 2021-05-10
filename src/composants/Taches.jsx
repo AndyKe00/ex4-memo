@@ -43,6 +43,14 @@ export default function Taches({etatTaches, utilisateur}) {
     );
   }
 
+  function basculerTache(tache, completee)
+  {
+        crudTaches.basculer(uid, tache, completee).then( 
+        //() => setTaches(taches.map(basc => basc.completee))
+        console.log("Basculer!")
+    )
+  }
+
   return (
     <section className="Taches">
       <form onSubmit={e => gererAjoutTache(uid, e)}>
@@ -56,7 +64,7 @@ export default function Taches({etatTaches, utilisateur}) {
       </form>
       <div className="listeTaches">
         {
-          taches.map(tache => <Tache key={tache.id} {... tache} supprimerTache={supprimerTache} />)
+          taches.map(tache => <Tache key={tache.id} {... tache} supprimerTache={supprimerTache} basculerTache={basculerTache}/>)
         }
       </div>
     </section>
